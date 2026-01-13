@@ -1,0 +1,89 @@
+type: report
+name: Team Velocity Report
+
+input:
+  team:
+    type: enum
+    options: [engineering, operations, support, marketing]
+    default: engineering
+    description: Team to analyze
+  weeks:
+    type: number
+    default: 6
+    description: Number of weeks to include
+
+code: |
+  async function run(inputs, ctx) {
+    const weekData = [];
+    const today = new Date();
+    
+    for (let i = inputs.weeks - 1; i >= 0; i--) {
+      const weekStart = new Date(today);
+      weekStart.setDate(today.getDate() - (i * 7) - today.getDay());
+      
+      const weekNum = getISOWeek(weekStart);
+      const year = weekStart.getFullYear();
+      
+      const opened = Math.floor(Math.random() * 15) + 5;
+      const closed = Math.floor(Math.random() * 18) + 3;
+      const carryover = i === inputs.weeks - 1 ? Math.floor(Math.random() * 10) + 5 : weekData[weekData.length - 1]?.endingBacklog || 0;
+      const endingBacklog = carryover + opened - closed;
+      
+      weekData.push({
+        week: `${year}-W${String(weekNum).padStart(2, '0')}`,
+        weekStart: weekStart.toISOString().split('T')[0],
+        opened,
+        closed,
+        carryover,
+        endingBacklog: Math.max(0, endingBacklog),
+        velocity: closed,
+        netChange: closed - opened,
+      });
+    }
+    
+    const totalOpened = weekData.reduce((sum, w) => sum + w.opened, 0);
+    const totalClosed = weekData.reduce((sum, w) => sum + w.closed, 0);
+    const avgVelocity = (totalClosed / inputs.weeks).toFixed(1);
+    const currentBacklog = weekData[weekData.length - 1]?.endingBacklog || 0;
+    
+    return {
+      team: inputs.team,
+      period: `${weekData[0]?.week} to ${weekData[weekData.length - 1]?.week}`,
+      summary: {
+        totalOpened,
+        totalClosed,
+        avgVelocity: parseFloat(avgVelocity),
+        currentBacklog,
+        trend: totalClosed > totalOpened ? 'improving' : totalClosed < totalOpened ? 'declining' : 'stable',
+      },
+      weeklyData: weekData,
+      columns: [
+        { key: 'week', label: 'Week', align: 'left' },
+        { key: 'opened', label: 'Opened', align: 'right' },
+        { key: 'closed', label: 'Closed', align: 'right' },
+        { key: 'netChange', label: 'Net', align: 'right' },
+        { key: 'endingBacklog', label: 'Backlog', align: 'right' },
+      ],
+    };
+  }
+  
+  function getISOWeek(date) {
+    const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+    const dayNum = d.getUTCDay() || 7;
+    d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+    const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+  }
+
+display:
+  layout: dashboard
+  sections:
+    - type: row
+      items:
+        - { type: stat, field: summary.totalOpened, label: Total Opened }
+        - { type: stat, field: summary.totalClosed, label: Total Closed }
+        - { type: stat, field: summary.avgVelocity, label: Avg Velocity }
+        - { type: stat, field: summary.currentBacklog, label: Current Backlog }
+    - type: table
+      field: weeklyData
+      columns: columns
