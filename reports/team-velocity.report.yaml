@@ -86,4 +86,5 @@ display:
         - { type: stat, field: summary.currentBacklog, label: Current Backlog }
     - type: table
       field: weeklyData
+      label: Weekly Breakdown
       columns: columns
