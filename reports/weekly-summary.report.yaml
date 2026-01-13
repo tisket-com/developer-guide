@@ -1,0 +1,34 @@
+type: report
+name: Weekly Team Summary
+
+input:
+  team:
+    type: enum
+    options: [engineering, operations, support]
+    default: engineering
+  
+display:
+  layout: dashboard
+  sections:
+    - type: row
+      items:
+        - { type: stat, field: total, label: Total Tickets }
+        - { type: stat, field: open, label: Open }
+        - { type: stat, field: resolved, label: Resolved }
+
+code: |
+  async function run(params, ctx) {
+    const tickets = await ctx.tickets.list({ 
+      team: params.team,
+      limit: 100 
+    });
+    
+    const open = tickets.filter(t => t.frontmatter?.status === 'open').length;
+    const resolved = tickets.filter(t => t.frontmatter?.status === 'resolved').length;
+    
+    return {
+      total: tickets.length,
+      open,
+      resolved
+    };
+  }
