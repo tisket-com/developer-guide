@@ -11,5 +11,6 @@ Welcome to the Developer Guide!
 ## Next Steps
 
 Check out the following guides:
+- [Features](./features.md)
 - [API Reference](./api/overview.md)
 - [Architecture](./architecture.md)
