@@ -1,2 +1,2 @@
 # developer-guide
-Technical documentation for developers
+Technical documentation for developers 😊
