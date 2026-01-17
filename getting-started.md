@@ -24,3 +24,7 @@ Once you’ve completed the Quick Start, you can dive deeper into the platform:
 - Read through the **Architecture** guide to learn how the system is structured and how data flows through it.
 
 From here, you should be ready to start building, extending, or integrating with the platform.
+
+## Testing Updates
+
+This section exists to verify that documentation changes are correctly written, committed, and reflected in Tisket. If you can see this section, the update pipeline is working as expected.
