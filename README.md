@@ -12,3 +12,7 @@ This event was added to verify MCP visibility and confirm that document edits co
 ## Test Event — January 17, 2026
 
 This is a test event added to confirm that README updates can be created programmatically via the MCP API and are reflected correctly in the Tisket UI.
+
+## Standalone MCP Server Test — January 18, 2026
+
+This section was added to verify the standalone MCP server running on port 4000 is fully functional with all tool implementations wired up correctly.
