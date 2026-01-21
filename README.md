@@ -16,3 +16,7 @@ This is a test event added to confirm that README updates can be created program
 ## Standalone MCP Server Test — January 18, 2026
 
 This section was added to verify the standalone MCP server running on port 4000 is fully functional with all tool implementations wired up correctly.
+
+## Author Fix Test — January 21, 2026
+
+Testing that commit author info now uses the user's real name and email from the database.
