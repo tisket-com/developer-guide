@@ -38,3 +38,12 @@ This section was added to demonstrate the new Timeline feature in the sidebar. W
 - Compare changes between versions
 
 The Timeline replaces the old History button and provides a VS Code-like experience for viewing file changes.
+
+## Local Branch Sync Test — January 21, 2026
+
+Testing the new local branch architecture for SSE commits. This commit should:
+
+- Appear immediately in the timeline (no API delay)
+- Be stored on a `local` branch in the browser git repo
+- Support immediate diff viewing without GitHub API calls
+- Be cleaned up on next sync/refresh from GitHub
