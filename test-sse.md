@@ -2,6 +2,6 @@
 
 Testing that auto-navigation only happens once per commit.
 
-## Update 2
+## Update 3
 
-Second test at timestamp: now
+This test should show the diff properly now.
