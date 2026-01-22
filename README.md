@@ -30,3 +30,22 @@ Added several UI improvements to the timeline and document viewer:
 - **Color-coded Timeline Dots**: Timeline entries that affect the current file show a colored dot (green for file creation, blue for modifications)
 - **Diff Header**: Improved diff header with 5xl max-width, centered layout, and proper padding
 - **Overflow Handling**: Timeline comments now properly truncate with ellipsis when the sidebar is resized
+
+## Context & State Management Refactor — January 22, 2026
+
+Major improvements to context management and UI state handling:
+
+- **PageContext**: New context for managing page-level UI state including headings, aside layout visibility, and diff header information. Separates concerns from BrowserGitContext for cleaner architecture.
+- **Version Subscription System**: BrowserGitContext now uses ref objects and a subscription mechanism for version tracking, allowing components to subscribe to version changes without triggering unnecessary re-renders.
+- **useVersion Hook**: New hook for improved version tracking across components, providing a cleaner API for accessing file version state.
+- **Deleted File Viewer**: New component for viewing files that have been deleted, with proper diff visualization.
+
+## UI/UX Enhancements — January 22, 2026
+
+Several usability improvements across the workspace:
+
+- **Smooth Scrolling to Diffs**: InlineDiffRenderer now automatically scrolls to the first diff line when viewing changes, making it easier to spot modifications.
+- **Component Memoization**: Workspace layout and sidebar components optimized with React.memo and useMemo for better performance during navigation.
+- **Project/Team Creation**: CreateProjectSheet and CreateTeamSheet now accept an `initialName` prop for pre-filling input fields, with useEffect to update state when the sheet opens.
+- **Workspace Switcher**: New WorkspaceSheet component for quickly switching between workspaces or creating new ones.
+- **Enhanced Search**: WorkspaceOverview now includes improved search functionality with keyboard navigation (arrow keys + enter) for selecting projects, teams, and documents.
