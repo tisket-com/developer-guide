@@ -47,3 +47,14 @@ Testing the new local branch architecture for SSE commits. This commit should:
 - Be stored on a `local` branch in the browser git repo
 - Support immediate diff viewing without GitHub API calls
 - Be cleaned up on next sync/refresh from GitHub
+
+## Auto-Commit/Push Test — January 22, 2026
+
+This section was added to test the new auto-commit and auto-push feature in the MCP write operation. When using the `write` tool:
+
+- File changes are automatically staged
+- A commit is created with an auto-generated message
+- The commit is pushed to GitHub immediately
+- No separate `git_commit` or `git_push` calls needed
+
+If you can see this section, the auto-commit/push pipeline is working correctly!
