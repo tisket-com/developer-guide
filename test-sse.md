@@ -1,7 +1,5 @@
-# SSE Navigation Test
+# Test SSE
 
-Testing that auto-navigation only happens once per commit.
+This is a test file to trigger an SSE commit.
 
-## Update 4
-
-Another test to verify the diff displays correctly on auto-navigation.
+Timestamp: 2026-01-22T12:00:00Z
