@@ -58,3 +58,14 @@ This section was added to test the new auto-commit and auto-push feature in the 
 - No separate `git_commit` or `git_push` calls needed
 
 If you can see this section, the auto-commit/push pipeline is working correctly!
+
+## MCP Write Test — January 23, 2026
+
+This section was added via the Tisket MCP server to verify the write operation is functioning correctly. This test demonstrates:
+
+- Successful MCP tool invocation from Cursor
+- File content modification through the MCP protocol
+- Automatic commit and push to the remote repository
+- Real-time updates visible in the Tisket interface
+
+If you're reading this, the MCP write tool is working as expected! 🎉
