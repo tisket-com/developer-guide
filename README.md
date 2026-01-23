@@ -49,3 +49,7 @@ Several usability improvements across the workspace:
 - **Project/Team Creation**: CreateProjectSheet and CreateTeamSheet now accept an `initialName` prop for pre-filling input fields, with useEffect to update state when the sheet opens.
 - **Workspace Switcher**: New WorkspaceSheet component for quickly switching between workspaces or creating new ones.
 - **Enhanced Search**: WorkspaceOverview now includes improved search functionality with keyboard navigation (arrow keys + enter) for selecting projects, teams, and documents.
+
+## MCP Cursor Integration Test — January 23, 2026
+
+This section was added via Cursor using the Tisket MCP server to test end-to-end integration. The MCP tools enable AI agents to read, write, and manage files across Tisket workspaces directly from the IDE.
